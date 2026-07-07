@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Datenschutzerklärung – Slotcar-Ankauf</title>
+<meta name="description" content="Datenschutzerklärung von Slotcar-Ankauf." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<script>
+  (function(){try{var s=localStorage.getItem('slotcar-theme');document.documentElement.dataset.theme=s||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');}catch(e){document.documentElement.dataset.theme='dark';}})();
+</script>
+<style>
+:root,:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ink:#0c0c0e;--ink-2:#141419;--line:#2b2c33;--paper:#f3efe8;--muted:#b4afa6;--muted-2:#8b867e;--red:#e5372c;--radius:3px;
+  --font-display:"Anton",sans-serif;--font-body:"Inter",system-ui,sans-serif;--font-mono:"Inter",system-ui,sans-serif;
+  --pad:clamp(1.25rem,4vw,3rem);
+}
+:root[data-theme="light"]{
+  color-scheme:light;
+  --ink:#f5f1ea;--ink-2:#ffffff;--line:#ddd6ca;--paper:#1c1a17;--muted:#5f5a51;--muted-2:#857f74;--red:#d12b20;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--ink);color:var(--paper);font-family:var(--font-body);line-height:1.7;font-size:1.1rem;-webkit-font-smoothing:antialiased;transition:background-color .3s ease,color .3s ease}
+a{color:inherit}
+.wrap{max-width:760px;margin-inline:auto;padding-inline:var(--pad)}
+.topbar{border-bottom:1px solid var(--line);position:sticky;top:0;background:color-mix(in srgb,var(--ink) 85%,transparent);backdrop-filter:blur(10px)}
+.topbar .wrap{max-width:1200px;display:flex;align-items:center;justify-content:space-between;min-height:66px}
+.brand{font-family:var(--font-display);text-transform:uppercase;font-size:1.15rem;letter-spacing:.02em}
+.brand .dash{color:var(--red)}
+.back{font-family:var(--font-mono);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.back:hover{color:var(--paper)}
+.eyebrow{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--red)}
+h1{font-family:var(--font-display);text-transform:uppercase;font-weight:400;font-size:clamp(2.4rem,7vw,4rem);line-height:.95;margin:1rem 0 1rem}
+.intro{color:var(--muted);margin-bottom:2rem}
+h2{font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.14em;font-size:.8rem;color:var(--red);margin:2.5rem 0 .8rem;font-weight:500}
+p{color:var(--muted);margin-bottom:.7rem}
+p b,address b{color:var(--paper);font-weight:500}
+ul{color:var(--muted);margin:.3rem 0 .7rem 1.2rem}
+li{margin-bottom:.3rem}
+address{font-style:normal;color:var(--muted);margin-bottom:.6rem}
+address a{color:var(--paper);border-bottom:1px solid var(--red)}
+.note{border-left:2px solid var(--red);padding:.4rem 0 .4rem 1rem;color:var(--muted-2);font-style:italic;font-size:.95rem;margin:1rem 0}
+.content{padding-block:clamp(3rem,8vh,5rem) 5rem}
+.curb{height:8px;background-image:repeating-linear-gradient(-45deg,var(--red) 0 14px,#f3efe8 14px 28px)}
+footer{border-top:1px solid var(--line)}
+footer .wrap{max-width:1200px;padding-block:1.6rem 2.5rem;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-2);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+footer a{color:var(--paper);border-bottom:1px solid var(--red)}
+.topbar__right{display:flex;align-items:center;gap:1.2rem}
+.theme-toggle{display:inline-flex;align-items:center;gap:.5em;background:none;border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:.35em .8em;cursor:pointer;font-family:var(--font-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;transition:border-color .15s,color .15s}
+.theme-toggle:hover{border-color:var(--paper);color:var(--paper)}
+.theme-toggle .ico{width:13px;height:13px;flex:none}
+.theme-toggle .ico-moon,.theme-toggle .lbl-dark{display:none}
+:root[data-theme="light"] .theme-toggle .ico-sun,:root[data-theme="light"] .theme-toggle .lbl-light{display:none}
+:root[data-theme="light"] .theme-toggle .ico-moon{display:block}
+:root[data-theme="light"] .theme-toggle .lbl-dark{display:inline}
+@media(max-width:520px){.theme-toggle .lbl-light,.theme-toggle .lbl-dark{display:none}:root[data-theme="light"] .theme-toggle .lbl-dark{display:none}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <a class="brand" href="index.html">Slotcar<span class="dash">–</span>Ankauf</a>
+  <div class="topbar__right">
+    <a class="back" href="index.html">← Zurück zur Startseite</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Zwischen hellem und dunklem Design wechseln">
+      <svg class="ico ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="ico ico-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+      <span class="lbl-light">Hell</span><span class="lbl-dark">Dunkel</span>
+    </button>
+  </div>
+</div></div>
+
+<main class="wrap content">
+  <span class="eyebrow">Rechtliches</span>
+  <h1>Datenschutz</h1>
+  <p class="intro">Wir nehmen den Schutz Ihrer persönlichen Daten ernst und behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Vorschriften (DSGVO, BDSG). Nachfolgend informieren wir Sie über die Verarbeitung Ihrer Daten bei der Nutzung dieser Website.</p>
+
+  <div class="note">Hinweis: Dieser Text ist ein Grundgerüst und sollte vor dem Live-Gang von einer fachkundigen Stelle geprüft werden. Sollten künftig weitere Dienste (z. B. Analyse-Tools) eingebunden werden, ist dieser Text entsprechend zu ergänzen.</div>
+
+  <h2>1. Verantwortlicher</h2>
+  <address>
+    <b>Modellbau Julia Lämmle e.Kfr.</b><br>
+    Untermöllenbronn 34/1, 88339 Bad Waldsee<br>
+    Telefon: +49 151 17602982<br>
+    E-Mail: <a href="mailto:ankauf@laemmle-modellbahn.de">ankauf@laemmle-modellbahn.de</a>
+  </address>
+
+  <h2>2. Erhebung und Verwendung Ihrer Daten</h2>
+  <p>Personenbezogene Daten erheben wir nur, wenn Sie uns diese im Rahmen einer Kontaktaufnahme freiwillig mitteilen – insbesondere über das Kontaktformular oder per E-Mail.</p>
+
+  <h2>3. Kontaktformular und Foto-Upload</h2>
+  <p>Wenn Sie uns über das Kontaktformular eine Anfrage senden, verarbeiten wir die von Ihnen angegebenen Daten zum Zweck der Bearbeitung Ihrer Ankaufsanfrage. Dazu gehören insbesondere:</p>
+  <ul>
+    <li>Name</li>
+    <li>E-Mail-Adresse</li>
+    <li>Telefonnummer (sofern angegeben)</li>
+    <li>Beschreibung der Sammlung und ggf. Preisvorstellung</li>
+    <li>hochgeladene Fotos bzw. Dateien zur Sammlung</li>
+  </ul>
+  <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Anbahnung eines Vertragsverhältnisses) sowie unser berechtigtes Interesse an der Bearbeitung Ihrer Anfrage (Art. 6 Abs. 1 lit. f DSGVO). Die Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und nicht an unbeteiligte Dritte weitergegeben.</p>
+
+  <h2>4. Speicherdauer</h2>
+  <p>Wir speichern Ihre Daten nur so lange, wie es für die Bearbeitung Ihrer Anfrage erforderlich ist, oder solange gesetzliche Aufbewahrungsfristen bestehen. Danach werden die Daten gelöscht.</p>
+
+  <h2>5. Hosting</h2>
+  <p>Diese Website wird bei Netlify, Inc. (2325 3rd Street, Suite 296, San Francisco, CA 94107, USA) gehostet. Netlify verarbeitet dabei technisch notwendige Server-Logdaten (z. B. IP-Adresse, Datum und Uhrzeit des Zugriffs, abgerufene Seite), um die Website bereitzustellen und auszuliefern.</p>
+  <p>Da Netlify, Inc. ihren Sitz in den USA hat, kann es dabei zu einer Übermittlung personenbezogener Daten in ein Land außerhalb der EU/des EWR (Drittland) kommen. Netlify hat sich nach eigenen Angaben zur Einhaltung der EU-Standardvertragsklauseln (Art. 46 DSGVO) verpflichtet, um ein angemessenes Datenschutzniveau sicherzustellen. Weitere Informationen stellt Netlify in der eigenen Datenschutzerklärung unter <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">netlify.com/privacy</a> bereit.</p>
+  <p>Auch die Verarbeitung der über das Kontaktformular übermittelten Daten (siehe Abschnitt 3) erfolgt technisch über die Formularfunktion von Netlify („Netlify Forms").</p>
+
+  <h2>6. Ihre Rechte</h2>
+  <p>Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie das Recht, einer Verarbeitung zu widersprechen. Zudem können Sie sich bei einer Datenschutz-Aufsichtsbehörde beschweren. Für die Ausübung Ihrer Rechte genügt eine Nachricht an die oben genannten Kontaktdaten.</p>
+
+  <h2>7. SSL-/TLS-Verschlüsselung</h2>
+  <p>Diese Seite nutzt aus Sicherheitsgründen eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie am „https://" in der Adresszeile Ihres Browsers.</p>
+</main>
+
+<div class="curb" aria-hidden="true"></div>
+<footer><div class="wrap">
+  <span>© 2026 Slotcar-Ankauf</span>
+  <span><a href="impressum.html">Impressum</a></span>
+</div></footer>
+<script>
+  document.getElementById('themeToggle').addEventListener('click',function(){
+    var n=document.documentElement.dataset.theme==='light'?'dark':'light';
+    document.documentElement.dataset.theme=n;
+    try{localStorage.setItem('slotcar-theme',n);}catch(e){}
+  });
+</script>
+</body>
+</html>

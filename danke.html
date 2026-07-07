@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vielen Dank – Slotcar-Ankauf</title>
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<script>
+  (function(){try{var s=localStorage.getItem('slotcar-theme');document.documentElement.dataset.theme=s||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');}catch(e){document.documentElement.dataset.theme='dark';}})();
+</script>
+<style>
+:root,:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ink:#0c0c0e;--ink-2:#141419;--line:#2b2c33;--paper:#f3efe8;--muted:#b4afa6;--muted-2:#8b867e;--red:#e5372c;--red-deep:#b1231a;--radius:3px;
+  --font-display:"Anton",sans-serif;--font-body:"Inter",system-ui,sans-serif;--font-mono:"Inter",system-ui,sans-serif;
+  --pad:clamp(1.25rem,4vw,3rem);
+}
+:root[data-theme="light"]{
+  color-scheme:light;
+  --ink:#f5f1ea;--ink-2:#ffffff;--line:#ddd6ca;--paper:#1c1a17;--muted:#5f5a51;--muted-2:#857f74;--red:#d12b20;--red-deep:#a81f16;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--ink);color:var(--paper);font-family:var(--font-body);line-height:1.7;font-size:1.1rem;-webkit-font-smoothing:antialiased;transition:background-color .3s ease,color .3s ease;min-height:100vh;display:flex;flex-direction:column}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:760px;margin-inline:auto;padding-inline:var(--pad)}
+.topbar{border-bottom:1px solid var(--line)}
+.topbar .wrap{max-width:1200px;display:flex;align-items:center;justify-content:space-between;min-height:66px}
+.brand{font-family:var(--font-display);text-transform:uppercase;font-size:1.15rem;letter-spacing:.02em}
+.brand .dash{color:var(--red)}
+.content{flex:1;display:flex;align-items:center;padding-block:clamp(3rem,10vh,6rem)}
+.eyebrow{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--red);display:inline-flex;align-items:center;gap:.7em}
+.eyebrow::before{content:"";width:1.8rem;height:2px;background:var(--red);display:inline-block}
+h1{font-family:var(--font-display);text-transform:uppercase;font-weight:400;font-size:clamp(2rem,5vw,3rem);line-height:.98;margin:1rem 0 1rem}
+p{color:var(--muted);margin-bottom:1rem;max-width:52ch}
+.direct{margin-top:1.8rem;padding-top:1.8rem;border-top:1px solid var(--line);font-family:var(--font-mono);font-size:.85rem;color:var(--muted)}
+.direct a{color:var(--paper);border-bottom:1px solid var(--red)}
+.direct .row{margin-top:.6rem}
+.btn{font-family:var(--font-mono);font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;display:inline-flex;align-items:center;gap:.8em;padding:1.05em 1.9em;border:1px solid transparent;border-radius:var(--radius);background:var(--red);color:#fff;transition:background .18s ease,transform .18s ease;margin-top:2rem}
+.btn:hover{background:var(--red-deep);transform:translateY(-2px)}
+.curb{height:8px;background-image:repeating-linear-gradient(-45deg,var(--red) 0 14px,#f3efe8 14px 28px)}
+footer{border-top:1px solid var(--line)}
+footer .wrap{max-width:1200px;padding-block:1.6rem 2.5rem;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-2);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+footer a{color:var(--paper);border-bottom:1px solid var(--red)}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <a class="brand" href="/">Slotcar<span class="dash">–</span>Ankauf</a>
+</div></div>
+
+<main class="wrap content">
+  <div>
+    <span class="eyebrow">Anfrage eingegangen</span>
+    <h1>Vielen Dank!</h1>
+    <p>Ihre Anfrage ist bei uns eingegangen. Wir sichten Ihre Angaben und melden uns in der Regel innerhalb weniger Werktage mit einem unverbindlichen Angebot.</p>
+    <div class="direct">
+      Ganz eilig? Direkt melden:
+      <div class="row"><a href="tel:+4915117602982">+49 151 17602982</a></div>
+      <div class="row"><a href="https://wa.me/4915117602982" target="_blank" rel="noopener">Per WhatsApp schreiben</a></div>
+    </div>
+    <a class="btn" href="/">Zur Startseite <span aria-hidden="true">→</span></a>
+  </div>
+</main>
+
+<div class="curb" aria-hidden="true"></div>
+<footer><div class="wrap">
+  <span>© 2026 Slotcar-Ankauf</span>
+  <span><a href="/impressum.html">Impressum</a></span>
+</div></footer>
+</body>
+</html>
