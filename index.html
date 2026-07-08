@@ -1150,55 +1150,10 @@ html.cookie-ok .cookie-banner { display: none; }
         </div>
       </div>
 
-      <!-- Netlify Forms: name + data-netlify + honeypot (netlify-honeypot) sorgen für
-           Erkennung beim Deploy und Spam-Schutz. Funktioniert erst live auf Netlify,
-           nicht im lokalen Python-Server. -->
-      <form id="ankaufForm" name="ankauf" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" action="/danke.html">
-        <input type="hidden" name="form-name" value="ankauf" />
-        <p style="position:absolute; left:-9999px;" aria-hidden="true">
-          <label>Nicht ausfüllen: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
-        </p>
-        <div class="field row2">
-          <div class="field">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Vor- und Nachname" required />
-          </div>
-          <div class="field">
-            <label for="email">E-Mail</label>
-            <input type="email" id="email" name="email" placeholder="name@beispiel.de" required />
-          </div>
-        </div>
-
-        <div class="field">
-          <label for="telefon">Telefon <span class="opt">(optional)</span></label>
-          <input type="tel" id="telefon" name="telefon" placeholder="Für Rückfragen" />
-        </div>
-
-        <div class="field">
-          <label for="beschreibung">Kurzbeschreibung der Sammlung</label>
-          <textarea id="beschreibung" name="beschreibung" placeholder="Welche Marken, ungefährer Umfang, Zustand, neu oder bespielt … – ein paar Stichworte genügen." required></textarea>
-        </div>
-
-        <div class="field">
-          <label for="fotos">Fotos</label>
-          <label class="upload" for="fotos">
-            <span class="up-title">Fotos auswählen</span>
-            <span class="up-hint">Übersichtsbilder reichen · JPG, HEIC, PNG oder PDF · mehrere Dateien möglich</span>
-            <span class="up-files" id="upFiles"></span>
-            <input type="file" id="fotos" name="fotos" accept="image/*,.pdf" multiple />
-          </label>
-        </div>
-
-        <div class="field price-field">
-          <label for="preis">Ihre Preisvorstellung, falls Sie eine haben (optional)</label>
-          <input type="text" id="preis" name="preis" placeholder="Kein Pflichtfeld – lassen Sie es ruhig frei" />
-        </div>
-
-        <div class="form-foot">
-          <p class="form-consent">Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Angaben zur Bearbeitung der Anfrage zu. Details in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
-          <button type="submit" class="btn btn--primary">Anfrage senden <span class="arw" aria-hidden="true">→</span></button>
-        </div>
-      </form>
+      <!-- Tally-Formular (Inline-Embed). Felder/Logik werden in Tally selbst gepflegt. -->
+      <iframe data-tally-src="https://tally.so/embed/pb9NGV?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+        loading="lazy" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0"
+        title="Slotcar Ankauf – Sammlung anbieten"></iframe>
     </div>
   </div>
 </section>
@@ -1255,16 +1210,6 @@ html.cookie-ok .cookie-banner { display: none; }
     navToggle.setAttribute('aria-expanded', 'false');
   }));
 
-  // File upload filename display
-  const fotos = document.getElementById('fotos');
-  const upFiles = document.getElementById('upFiles');
-  fotos.addEventListener('change', () => {
-    const n = fotos.files.length;
-    if (!n) { upFiles.textContent = ''; return; }
-    if (n === 1) { upFiles.textContent = '✓ ' + fotos.files[0].name; return; }
-    upFiles.textContent = '✓ ' + n + ' Dateien ausgewählt';
-  });
-
   // FAQ: single-open accordion (native <details>, coordinated)
   const items = document.querySelectorAll('.faq__item');
   items.forEach(item => {
@@ -1287,8 +1232,7 @@ html.cookie-ok .cookie-banner { display: none; }
     document.getElementById('cookieNecessary').addEventListener('click', function () { closeBanner('minimal'); });
   })();
 
-  // Netlify Forms: natives Submit, keine JS-Abfangung nötig.
-  // Browser-eigene Validierung (required-Attribute) greift weiterhin von allein.
 </script>
+<script src="https://tally.so/widgets/embed.js"></script>
 </body>
 </html>
