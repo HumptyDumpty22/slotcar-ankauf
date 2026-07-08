@@ -384,8 +384,11 @@ a { color: inherit; text-decoration: none; }
   font-size: 0.82rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted-2);
   white-space: nowrap;
 }
-.ticker__track span { display: inline-flex; align-items: center; gap: 3.5rem; }
-.ticker__track span::after { content: "◦"; color: var(--red); }
+.ticker__group { display: inline-flex; align-items: center; gap: 1.8rem; }
+.ticker__group::after { content: "◦"; color: var(--red); margin-left: 1.8rem; }
+.ticker__item { display: inline-flex; align-items: center; gap: 1.8rem; }
+.ticker__item::after { content: "◦"; color: var(--red); }
+.ticker__item:last-child::after { content: none; }
 @keyframes slide { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .ticker__track { animation: none; } }
 
@@ -811,8 +814,12 @@ html.cookie-ok .cookie-banner { display: none; }
 <!-- ============ BRAND TICKER ============ -->
 <div class="ticker" aria-hidden="true">
   <div class="ticker__track">
-    <span>Carrera Scalextric SCX Ninco Slot.it NSR Sideways Thunderslot Scaleauto RevoSlot BRM Fly / FlySlot Policar Pioneer SRC Slot Classic Le Mans Miniatures</span>
-    <span>Carrera Scalextric SCX Ninco Slot.it NSR Sideways Thunderslot Scaleauto RevoSlot BRM Fly / FlySlot Policar Pioneer SRC Slot Classic Le Mans Miniatures</span>
+    <span class="ticker__group">
+      <span class="ticker__item">Carrera</span><span class="ticker__item">Scalextric</span><span class="ticker__item">SCX</span><span class="ticker__item">Ninco</span><span class="ticker__item">Slot.it</span><span class="ticker__item">NSR</span><span class="ticker__item">Sideways</span><span class="ticker__item">Thunderslot</span><span class="ticker__item">Scaleauto</span><span class="ticker__item">RevoSlot</span><span class="ticker__item">BRM</span><span class="ticker__item">Fly / FlySlot</span><span class="ticker__item">Policar</span><span class="ticker__item">Pioneer</span><span class="ticker__item">SRC</span><span class="ticker__item">Slot Classic</span><span class="ticker__item">Le Mans Miniatures</span>
+    </span>
+    <span class="ticker__group">
+      <span class="ticker__item">Carrera</span><span class="ticker__item">Scalextric</span><span class="ticker__item">SCX</span><span class="ticker__item">Ninco</span><span class="ticker__item">Slot.it</span><span class="ticker__item">NSR</span><span class="ticker__item">Sideways</span><span class="ticker__item">Thunderslot</span><span class="ticker__item">Scaleauto</span><span class="ticker__item">RevoSlot</span><span class="ticker__item">BRM</span><span class="ticker__item">Fly / FlySlot</span><span class="ticker__item">Policar</span><span class="ticker__item">Pioneer</span><span class="ticker__item">SRC</span><span class="ticker__item">Slot Classic</span><span class="ticker__item">Le Mans Miniatures</span>
+    </span>
   </div>
 </div>
 
