@@ -22,10 +22,6 @@
 <meta name="twitter:description" content="Komplette Slotcar-Sammlungen aller Marken – Carrera, Scalextric, SCX, Ninco, Fly, Slot.it und mehr. Faires Angebot nach Fotos, Versand oder Abholung, deutschlandweit." />
 <meta name="twitter:image" content="https://slotcar-ankauf.de/assets/slotcar-ankauf-hero.jpg" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
 <script>
   (function () {
     try {
@@ -46,9 +42,19 @@
    SLOTCAR-ANKAUF.DE
    Aesthetic: dark racing-editorial. Signal red accent,
    red/white curb-stripe motif, silver rails, grain.
-   Fonts: Anton (display/numbers), Newsreader (body/serif),
-   JetBrains Mono (labels/telemetry).
+   Fonts: Anton (display/numbers), Inter (body/labels), self-hosted.
    ============================================================ */
+
+@font-face {
+  font-family: "Anton";
+  src: url("/assets/fonts/anton-400.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/assets/fonts/inter-variable.woff2") format("woff2");
+  font-weight: 300 700; font-style: normal; font-display: swap;
+}
 
 :root, :root[data-theme="dark"] {
   color-scheme: dark;
@@ -679,42 +685,46 @@ textarea { resize: vertical; min-height: 130px; }
 @media (max-width: 520px) { .google-badge { flex-wrap: wrap; } }
 
 /* ============================================================
-   COOKIE-BANNER (EU-konform)
+   COOKIE-MODAL (EU-konform, blockierend, zwei gleichwertige Buttons)
    ============================================================ */
-.cookie-banner {
-  position: fixed; bottom: 0; left: 0; right: 0; z-index: 9000;
-  background: #0a0a0c;
-  border-top: 1px solid #23242b;
-  font-family: var(--font-mono);
+.cookie-overlay {
+  position: fixed; inset: 0; z-index: 9000;
+  background: rgba(0,0,0,0.72);
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.5rem;
 }
-html.cookie-ok .cookie-banner { display: none; }
-.cookie-banner__inner {
-  max-width: var(--maxw); margin-inline: auto; padding: 1.1rem var(--pad);
-  display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+html.cookie-ok .cookie-overlay { display: none; }
+html:not(.cookie-ok) body { overflow: hidden; }
+.cookie-modal {
+  max-width: 480px; width: 100%;
+  background: #0a0a0c; border: 1px solid #23242b; border-radius: var(--radius);
+  padding: 2rem; font-family: var(--font-mono);
 }
-.cookie-banner__text {
-  flex: 1; min-width: 200px;
-  font-size: 0.76rem; letter-spacing: 0.02em; color: #8b867e; line-height: 1.5;
+.cookie-modal__text {
+  font-size: 0.85rem; letter-spacing: 0.02em; color: #b4afa6; line-height: 1.6;
 }
-.cookie-banner__text a { color: #e9e4dc; border-bottom: 1px solid #3a3b44; }
-.cookie-banner__actions {
-  display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap;
+.cookie-modal__text a { color: #e9e4dc; border-bottom: 1px solid #3a3b44; }
+.cookie-modal__actions {
+  display: flex; gap: 0.8rem; margin-top: 1.5rem;
 }
 .cookie-btn {
+  flex: 1;
   font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
-  padding: 0.6em 1.1em; border-radius: var(--radius); cursor: pointer;
-  border: 1px solid #3a3b44; background: none; color: #b4afa6;
-  transition: border-color .15s, color .15s, background .15s;
-  white-space: nowrap;
+  padding: 0.8em 1.1em; border-radius: var(--radius); cursor: pointer;
+  border: 1px solid #3a3b44; background: none; color: #e9e4dc;
+  transition: border-color .15s, background .15s;
 }
-.cookie-btn:hover { border-color: #b4afa6; color: #e9e4dc; }
-.cookie-btn--primary { background: var(--red); border-color: var(--red); color: #fff; }
-.cookie-btn--primary:hover { background: var(--red-deep); border-color: var(--red-deep); color: #fff; }
-@media (max-width: 560px) {
-  .cookie-banner__inner { flex-direction: column; align-items: flex-start; }
-  .cookie-banner__actions { flex-direction: column; width: 100%; }
-  .cookie-btn { width: 100%; text-align: center; justify-content: center; }
+.cookie-btn:hover { border-color: var(--red); }
+@media (max-width: 520px) {
+  .cookie-modal__actions { flex-direction: column; }
 }
+
+/* Tally lädt erst nach Zustimmung – bis dahin Hinweistext statt iframe */
+.tally-blocked {
+  display: block; padding: 2rem; border: 1px dashed var(--line); border-radius: var(--radius); color: var(--muted);
+}
+html.tally-ok .tally-blocked { display: none; }
+html:not(.tally-ok) #tallyFrame { display: none; }
 
 /* reveal-on-load stagger for hero children */
 .reveal { opacity: 0; transform: translateY(18px); animation: rise .8s cubic-bezier(.2,.7,.2,1) forwards; }
@@ -729,17 +739,17 @@ html.cookie-ok .cookie-banner { display: none; }
 </head>
 <body>
 
-<!-- ============ COOKIE-BANNER ============ -->
-<div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie-Einstellungen">
-  <div class="cookie-banner__inner">
-    <p class="cookie-banner__text">
-      Diese Website verwendet funktionale Cookies (Theme-Einstellung) und bereitet die Einbindung weiterer Dienste vor.
+<!-- ============ COOKIE-MODAL ============ -->
+<div class="cookie-overlay" id="cookieOverlay" role="dialog" aria-modal="true" aria-label="Cookie-Einstellungen">
+  <div class="cookie-modal">
+    <p class="cookie-modal__text">
+      Diese Website verwendet ein technisch notwendiges Cookie für Ihre Theme- und Cookie-Einstellung.
+      Das Kontaktformular wird über den externen Dienst Tally bereitgestellt und lädt nur, wenn Sie „Alle akzeptieren" wählen.
       Weitere Infos in der <a href="datenschutz.html">Datenschutzerklärung</a>.
     </p>
-    <div class="cookie-banner__actions">
+    <div class="cookie-modal__actions">
       <button class="cookie-btn" id="cookieNecessary">Nur notwendige</button>
-      <button class="cookie-btn" id="cookieReject">Alle ablehnen</button>
-      <button class="cookie-btn cookie-btn--primary" id="cookieAccept">Alle akzeptieren</button>
+      <button class="cookie-btn" id="cookieAccept">Alle akzeptieren</button>
     </div>
   </div>
 </div>
@@ -1150,8 +1160,13 @@ html.cookie-ok .cookie-banner { display: none; }
         </div>
       </div>
 
-      <!-- Tally-Formular (Inline-Embed). Felder/Logik werden in Tally selbst gepflegt. -->
-      <iframe data-tally-src="https://tally.so/embed/pb9NGV?alignLeft=1&hideTitle=1&dynamicHeight=1"
+      <!-- Tally-Formular (Inline-Embed). Felder/Logik werden in Tally selbst gepflegt.
+           Lädt erst nach Cookie-Zustimmung ("Alle akzeptieren"), siehe Script am Seitenende. -->
+      <div class="tally-blocked" id="tallyBlocked">
+        Um das Formular zu nutzen, akzeptieren Sie bitte externe Dienste im Cookie-Banner.
+        Alternativ erreichen Sie uns direkt per E-Mail, Telefon oder WhatsApp (siehe links).
+      </div>
+      <iframe id="tallyFrame" data-tally-src="https://tally.so/embed/pb9NGV?alignLeft=1&hideTitle=1&dynamicHeight=1"
         loading="lazy" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0"
         title="Slotcar Ankauf – Sammlung anbieten"></iframe>
     </div>
@@ -1220,19 +1235,33 @@ html.cookie-ok .cookie-banner { display: none; }
     });
   });
 
-  // Cookie-Banner
+  // Cookie-Modal + Tally-Consent-Gating
   (function () {
-    var banner = document.getElementById('cookieBanner');
-    function closeBanner(level) {
+    function closeModal(level) {
       try { localStorage.setItem('slotcar-cookie-consent', level); } catch (e) {}
       document.documentElement.classList.add('cookie-ok');
     }
-    document.getElementById('cookieAccept').addEventListener('click', function () { closeBanner('all'); });
-    document.getElementById('cookieReject').addEventListener('click', function () { closeBanner('minimal'); });
-    document.getElementById('cookieNecessary').addEventListener('click', function () { closeBanner('minimal'); });
+    function loadTally() {
+      if (document.getElementById('tallyScript')) return;
+      var s = document.createElement('script');
+      s.id = 'tallyScript';
+      s.src = 'https://tally.so/widgets/embed.js';
+      document.body.appendChild(s);
+      document.documentElement.classList.add('tally-ok');
+    }
+    document.getElementById('cookieAccept').addEventListener('click', function () {
+      closeModal('all');
+      loadTally();
+    });
+    document.getElementById('cookieNecessary').addEventListener('click', function () {
+      closeModal('minimal');
+    });
+    // Wiederkehrender Besucher mit bereits gespeicherter Zustimmung: Tally sofort laden
+    try {
+      if (localStorage.getItem('slotcar-cookie-consent') === 'all') { loadTally(); }
+    } catch (e) {}
   })();
 
 </script>
-<script src="https://tally.so/widgets/embed.js"></script>
 </body>
 </html>
