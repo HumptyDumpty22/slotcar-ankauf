@@ -28,9 +28,6 @@
       var saved = localStorage.getItem('slotcar-theme');
       var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
       document.documentElement.dataset.theme = theme;
-      if (localStorage.getItem('slotcar-cookie-consent')) {
-        document.documentElement.classList.add('cookie-ok');
-      }
     } catch (e) {
       document.documentElement.dataset.theme = 'dark';
     }
@@ -644,12 +641,6 @@ textarea { resize: vertical; min-height: 130px; }
 }
 .footer__bottom .sister { color: var(--muted); }
 .footer__bottom .sister a { color: var(--paper); border-bottom: 1px solid var(--red); }
-.cookie-reopen {
-  background: none; border: none; padding: 0; cursor: pointer;
-  font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase;
-  color: var(--muted-2); border-bottom: 1px solid transparent; transition: color .15s, border-color .15s;
-}
-.cookie-reopen:hover { color: var(--paper); border-bottom-color: var(--red); }
 @media (max-width: 760px) { .footer__grid { grid-template-columns: 1fr; gap: 2rem; } }
 
 /* ============================================================
@@ -690,47 +681,11 @@ textarea { resize: vertical; min-height: 130px; }
 .google-badge__text { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
 @media (max-width: 520px) { .google-badge { flex-wrap: wrap; } }
 
-/* ============================================================
-   COOKIE-MODAL (EU-konform, blockierend, zwei gleichwertige Buttons)
-   ============================================================ */
-.cookie-overlay {
-  position: fixed; inset: 0; z-index: 9000;
-  background: rgba(0,0,0,0.72);
-  display: flex; align-items: center; justify-content: center;
-  padding: 1.5rem;
+/* Hinweistext über dem Tally-Formular (nicht-blockierend) */
+.tally-note {
+  font-size: 0.85rem; color: var(--muted-2); margin-bottom: 1rem;
 }
-html.cookie-ok .cookie-overlay { display: none; }
-html:not(.cookie-ok) body { overflow: hidden; }
-.cookie-modal {
-  max-width: 480px; width: 100%;
-  background: #0a0a0c; border: 1px solid #23242b; border-radius: var(--radius);
-  padding: 2rem; font-family: var(--font-mono);
-}
-.cookie-modal__text {
-  font-size: 0.85rem; letter-spacing: 0.02em; color: #b4afa6; line-height: 1.6;
-}
-.cookie-modal__text a { color: #e9e4dc; border-bottom: 1px solid #3a3b44; }
-.cookie-modal__actions {
-  display: flex; gap: 0.8rem; margin-top: 1.5rem;
-}
-.cookie-btn {
-  flex: 1;
-  font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
-  padding: 0.8em 1.1em; border-radius: var(--radius); cursor: pointer;
-  border: 1px solid #3a3b44; background: none; color: #e9e4dc;
-  transition: border-color .15s, background .15s;
-}
-.cookie-btn:hover { border-color: var(--red); }
-@media (max-width: 520px) {
-  .cookie-modal__actions { flex-direction: column; }
-}
-
-/* Tally lädt erst nach Zustimmung – bis dahin Hinweistext statt iframe */
-.tally-blocked {
-  display: block; padding: 2rem; border: 1px dashed var(--line); border-radius: var(--radius); color: var(--muted);
-}
-html.tally-ok .tally-blocked { display: none; }
-html:not(.tally-ok) #tallyFrame { display: none; }
+.tally-note a { color: var(--muted); border-bottom: 1px solid var(--line); }
 
 /* reveal-on-load stagger for hero children */
 .reveal { opacity: 0; transform: translateY(18px); animation: rise .8s cubic-bezier(.2,.7,.2,1) forwards; }
@@ -744,21 +699,6 @@ html:not(.tally-ok) #tallyFrame { display: none; }
 </style>
 </head>
 <body>
-
-<!-- ============ COOKIE-MODAL ============ -->
-<div class="cookie-overlay" id="cookieOverlay" role="dialog" aria-modal="true" aria-label="Cookie-Einstellungen">
-  <div class="cookie-modal">
-    <p class="cookie-modal__text">
-      Diese Website verwendet ein technisch notwendiges Cookie für Ihre Theme- und Cookie-Einstellung.
-      Das Kontaktformular wird über den externen Dienst Tally bereitgestellt und lädt nur, wenn Sie „Alle akzeptieren" wählen.
-      Weitere Infos in der <a href="datenschutz.html">Datenschutzerklärung</a>.
-    </p>
-    <div class="cookie-modal__actions">
-      <button class="cookie-btn" id="cookieNecessary">Nur notwendige</button>
-      <button class="cookie-btn" id="cookieAccept">Alle akzeptieren</button>
-    </div>
-  </div>
-</div>
 
 <!-- ============ SCHNELLKONTAKT-LEISTE ============ -->
 <div class="utilbar">
@@ -1166,12 +1106,11 @@ html:not(.tally-ok) #tallyFrame { display: none; }
         </div>
       </div>
 
-      <!-- Tally-Formular (Inline-Embed). Felder/Logik werden in Tally selbst gepflegt.
-           Lädt erst nach Cookie-Zustimmung ("Alle akzeptieren"), siehe Script am Seitenende. -->
-      <div class="tally-blocked" id="tallyBlocked">
-        Um das Formular zu nutzen, akzeptieren Sie bitte externe Dienste im Cookie-Banner.
-        Alternativ erreichen Sie uns direkt per E-Mail, Telefon oder WhatsApp (siehe links).
-      </div>
+      <!-- Tally-Formular (Inline-Embed). Felder/Logik werden in Tally selbst gepflegt. -->
+      <p class="tally-note">
+        Diese Website verwendet ausschließlich technisch notwendige Speicherfunktionen (z. B. für dieses Formular).
+        Details in der <a href="datenschutz.html">Datenschutzerklärung</a>.
+      </p>
       <iframe id="tallyFrame" data-tally-src="https://tally.so/embed/pb9NGV?alignLeft=1&hideTitle=1&dynamicHeight=1"
         loading="lazy" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0"
         title="Slotcar Ankauf – Sammlung anbieten"></iframe>
@@ -1206,7 +1145,6 @@ html:not(.tally-ok) #tallyFrame { display: none; }
     <div class="footer__bottom">
       <span>© 2026 Slotcar-Ankauf</span>
       <span class="sister">Ein Angebot von <a href="https://www.laemmle-modellbahn.de" target="_blank" rel="noopener">Lämmle Modellbahn</a></span>
-      <button class="cookie-reopen" id="cookieReopen" type="button">Cookie-Einstellungen</button>
     </div>
   </div>
 </footer>
@@ -1242,36 +1180,8 @@ html:not(.tally-ok) #tallyFrame { display: none; }
     });
   });
 
-  // Cookie-Modal + Tally-Consent-Gating
-  (function () {
-    function closeModal(level) {
-      try { localStorage.setItem('slotcar-cookie-consent', level); } catch (e) {}
-      document.documentElement.classList.add('cookie-ok');
-    }
-    function loadTally() {
-      if (document.getElementById('tallyScript')) return;
-      var s = document.createElement('script');
-      s.id = 'tallyScript';
-      s.src = 'https://tally.so/widgets/embed.js';
-      document.body.appendChild(s);
-      document.documentElement.classList.add('tally-ok');
-    }
-    document.getElementById('cookieAccept').addEventListener('click', function () {
-      closeModal('all');
-      loadTally();
-    });
-    document.getElementById('cookieNecessary').addEventListener('click', function () {
-      closeModal('minimal');
-    });
-    document.getElementById('cookieReopen').addEventListener('click', function () {
-      document.documentElement.classList.remove('cookie-ok');
-    });
-    // Wiederkehrender Besucher mit bereits gespeicherter Zustimmung: Tally sofort laden
-    try {
-      if (localStorage.getItem('slotcar-cookie-consent') === 'all') { loadTally(); }
-    } catch (e) {}
-  })();
 
 </script>
+<script src="https://tally.so/widgets/embed.js"></script>
 </body>
 </html>
