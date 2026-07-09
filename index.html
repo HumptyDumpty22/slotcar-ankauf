@@ -644,6 +644,12 @@ textarea { resize: vertical; min-height: 130px; }
 }
 .footer__bottom .sister { color: var(--muted); }
 .footer__bottom .sister a { color: var(--paper); border-bottom: 1px solid var(--red); }
+.cookie-reopen {
+  background: none; border: none; padding: 0; cursor: pointer;
+  font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--muted-2); border-bottom: 1px solid transparent; transition: color .15s, border-color .15s;
+}
+.cookie-reopen:hover { color: var(--paper); border-bottom-color: var(--red); }
 @media (max-width: 760px) { .footer__grid { grid-template-columns: 1fr; gap: 2rem; } }
 
 /* ============================================================
@@ -1200,6 +1206,7 @@ html:not(.tally-ok) #tallyFrame { display: none; }
     <div class="footer__bottom">
       <span>© 2026 Slotcar-Ankauf</span>
       <span class="sister">Ein Angebot von <a href="https://www.laemmle-modellbahn.de" target="_blank" rel="noopener">Lämmle Modellbahn</a></span>
+      <button class="cookie-reopen" id="cookieReopen" type="button">Cookie-Einstellungen</button>
     </div>
   </div>
 </footer>
@@ -1255,6 +1262,9 @@ html:not(.tally-ok) #tallyFrame { display: none; }
     });
     document.getElementById('cookieNecessary').addEventListener('click', function () {
       closeModal('minimal');
+    });
+    document.getElementById('cookieReopen').addEventListener('click', function () {
+      document.documentElement.classList.remove('cookie-ok');
     });
     // Wiederkehrender Besucher mit bereits gespeicherter Zustimmung: Tally sofort laden
     try {
